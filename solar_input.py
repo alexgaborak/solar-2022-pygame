@@ -46,11 +46,8 @@ def parse_body_parameters(line, body):  # parse_planet_parameters
     **body** — объект тела.
     """
     args = line.split()
-    body.type = args[0].lower()
-    body.R = int(args[1])
-    body.color = args[2]
-    body.m = int(args[3])
-    body.x, body.y, body.Vx, body.Vy = int(args[4]), int(args[5]), int(args[6]), int(args[7])
+
+    body = Body(args[0], float(args[1]), args[2], *map(float, args[3:8]))
     # FIXME: не понимает экспоненциальную запись
 
 
@@ -71,8 +68,9 @@ def write_space_objects_data_to_file(output_filename, objects):
     """
     with open(output_filename, 'w') as out_file:
         for obj in objects:
-            print(out_file, "%s %d %s %f %f %f %f %f" % (obj.type.capitalize(), obj.R, obj.color,
-                                                         obj.m, obj.x, obj.y, obj.Vx, obj.Vy))
+            print("%s %d %s %f %f %f %f %f" % (obj.type, obj.R, obj.color, obj.m, obj.x, obj.y,
+                                               obj.Vx, obj.Vy), file=out_file)
+        out_file.close()
 
 
 if __name__ == "__main__":
