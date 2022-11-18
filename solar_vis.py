@@ -11,10 +11,10 @@ import pygame as pg
 header_font = "Arial-16"
 """Шрифт в заголовке"""
 
-window_width = 800
+window_width = 720
 """Ширина окна"""
 
-window_height = 800
+window_height = 720
 """Высота окна"""
 
 scale_factor = 1
@@ -57,8 +57,7 @@ def scale_y(y):
 
     **y** — y-координата модели.
     """
-    pass  # FIXME
-
+    return int(y*scale_factor) + window_width//2
 
 
 if __name__ == "__main__":
@@ -68,7 +67,6 @@ if __name__ == "__main__":
 class Drawer:
     def __init__(self, screen):
         self.screen = screen
-
 
     def update(self, figures, ui):
         self.screen.fill((0, 0, 0))
