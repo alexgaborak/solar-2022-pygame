@@ -48,7 +48,7 @@ def parse_body_parameters(line, body):  # parse_planet_parameters
     args = line.split()
 
     body = Body(args[0], float(args[1]), args[2], *map(float, args[3:8]))
-    # FIXME: не понимает экспоненциальную запись
+
 
 
 def write_space_objects_data_to_file(output_filename, objects):
@@ -71,7 +71,7 @@ def write_space_objects_data_to_file(output_filename, objects):
             print("%s %d %s %f %f %f %f %f" % (obj.type, obj.R, obj.color, obj.m, obj.x, obj.y,
                                                obj.Vx, obj.Vy), file=out_file)
         out_file.close()
-    # FIXME: кринж с типами данных тоже
+    # FIXME: precision errors
 
 
 if __name__ == "__main__":
