@@ -5,7 +5,7 @@ import pygame as pg
 from solar_vis import *
 from solar_model import *
 from solar_input import *
-from solar_objects import *
+# from solar_objects import *
 import thorpy
 import time
 import numpy as np
@@ -149,8 +149,8 @@ def main():
 
     pg.init()
     
-    width = 1000
-    height = 900
+    width = 800
+    height = 720
     screen = pg.display.set_mode((width, height))
     last_time = time.perf_counter()
     drawer = Drawer(screen)
