@@ -42,6 +42,3 @@ class Body:
 
         self.image = None
         """Изображение тела"""
-
-    def draw(self, screen):
-        pass    # FIXME

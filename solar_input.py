@@ -2,6 +2,7 @@
 # license: GPLv3
 
 from solar_objects import Body
+from solar_vis import DrawableObject
 
 
 def read_space_objects_data_from_file(input_filename):
@@ -22,7 +23,7 @@ def read_space_objects_data_from_file(input_filename):
             parse_body_parameters(line, body)
             bodies.append(body)
 
-    return bodies
+    return [DrawableObject(obj) for obj in bodies]
 
 
 def parse_body_parameters(line, body):  # parse_planet_parameters
@@ -45,6 +46,7 @@ def parse_body_parameters(line, body):  # parse_planet_parameters
     **body** — объект тела.
     """
     args = line.split()
+
     body = Body(args[0], float(args[1]), args[2], *map(float, args[3:8]))
 
 

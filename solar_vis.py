@@ -59,7 +59,6 @@ def scale_y(y):
     """
     return int(y*scale_factor) + window_width//2
 
-
 if __name__ == "__main__":
     print("This module is not for direct call!")
 
