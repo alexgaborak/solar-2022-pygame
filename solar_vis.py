@@ -59,6 +59,7 @@ def scale_y(y):
     """
     return int(y*scale_factor) + window_width//2
 
+
 if __name__ == "__main__":
     print("This module is not for direct call!")
 
@@ -75,11 +76,3 @@ class Drawer:
         ui.blit()
         ui.update()
         pg.display.update()
-
-
-class DrawableObject:
-    def __init__(self, obj):
-        self.obj = obj
-
-    def draw(self, surface):
-        pass  # FIXME
