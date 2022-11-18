@@ -59,6 +59,7 @@ def scale_y(y):
     """
     return int(y*scale_factor) + window_width//2
 
+
 if __name__ == "__main__":
     print("This module is not for direct call!")
 
@@ -82,4 +83,4 @@ class DrawableObject:
         self.obj = obj
 
     def draw(self, surface):
-        pg.draw.circle(surface, self.obj.color, (self.obj.x, self.obj.y), self.obj.R)
+        pass  # FIXME
