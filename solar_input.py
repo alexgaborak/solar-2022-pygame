@@ -71,6 +71,7 @@ def write_space_objects_data_to_file(output_filename, objects):
             print("%s %d %s %f %f %f %f %f" % (obj.type, obj.R, obj.color, obj.m, obj.x, obj.y,
                                                obj.Vx, obj.Vy), file=out_file)
         out_file.close()
+    # FIXME: кринж с типами данных тоже
 
 
 if __name__ == "__main__":

@@ -8,7 +8,7 @@ class Body:
     а также визуальный радиус тела в пикселах и его цвет.
     """
 
-    def __init__(self, type="na", m=1, x=1, y=1, Vx=0, Vy=0, R=5, color="red", image=None):
+    def __init__(self, type="na", m=1, x=0, y=0, Vx=0, Vy=0, R=5, color="red", image=None):
 
         self.type = type
         """Признак объекта. Принимает значения "Star", "Planet" и "NA"."""
