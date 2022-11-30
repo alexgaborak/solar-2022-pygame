@@ -59,6 +59,7 @@ def scale_y(y):
     **y** — y-координата модели.
     """
     return y * scale_factor + window_height / 2
+    # почему "-"?
 
 
 if __name__ == "__main__":
