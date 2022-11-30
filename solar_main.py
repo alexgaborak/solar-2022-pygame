@@ -76,8 +76,6 @@ def open_file():
     space_objects = read_space_objects_data_from_file(in_filename)
 
     calculate_scale_factor(space_objects)
-    # как быть с тем фактом, что R - в пикселях?
-    # никак, какая разница?
 
 
 def handle_events(events, menu):
@@ -98,7 +96,7 @@ def slider_reaction(event):
 
 
 def init_ui(screen):
-    global browser
+
     slider = thorpy.SliderX(100, (-10, 10), "Simulation speed")
     slider.user_func = slider_reaction
     button_stop = thorpy.make_button("Quit", func=stop_execution)
