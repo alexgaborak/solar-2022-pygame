@@ -74,8 +74,8 @@ def open_file():
     model_time = 0.0
     in_filename = "solar_system.txt"
     space_objects = read_space_objects_data_from_file(in_filename)
-    max_distance = max([max(abs(obj.obj.x), abs(obj.obj.y), obj.obj.R) for obj in space_objects])
-    calculate_scale_factor(max_distance)
+
+    calculate_scale_factor(space_objects)
     # как быть с тем фактом, что R - в пикселях?
 
 

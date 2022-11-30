@@ -25,10 +25,12 @@ scale_factor = 1
 Мера: количество пикселей на один метр."""
 
 
-def calculate_scale_factor(max_distance):
+def calculate_scale_factor(bodies):
     """Вычисляет значение глобальной переменной **scale_factor** по данной характерной длине"""
+    max_distance = max([max(abs(obj.obj.x), abs(obj.obj.y))for obj in bodies])
+    max_r = max([obj.obj.R for obj in bodies])
     global scale_factor
-    scale_factor = 0.5*min(window_height, window_width)/max_distance    # бред
+    scale_factor = (0.5*min(window_height, window_width) - max_r)/max_distance    # бред
     print('Max distance:', max_distance)
     print('Scale factor:', scale_factor)
 
