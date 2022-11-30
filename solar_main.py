@@ -77,6 +77,7 @@ def open_file():
 
     calculate_scale_factor(space_objects)
     # как быть с тем фактом, что R - в пикселях?
+    # никак, какая разница?
 
 
 def handle_events(events, menu):
