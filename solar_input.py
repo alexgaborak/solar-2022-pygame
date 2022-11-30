@@ -19,14 +19,12 @@ def read_space_objects_data_from_file(input_filename):
         for line in input_file:
             if len(line.strip()) == 0 or line[0] == '#':
                 continue  # пустые строки и строки-комментарии пропускаем
-            body = Body()
-            parse_body_parameters(line, body)
-            bodies.append(body)
+            bodies.append(parse_body_parameters(line))
 
     return [DrawableObject(obj) for obj in bodies]
 
 
-def parse_body_parameters(line, body):  # parse_planet_parameters
+def parse_body_parameters(line):  # parse_planet_parameters
     """Считывает данные о теле из строки.
     Входная строка должна иметь слеюущий формат:
 
@@ -47,8 +45,9 @@ def parse_body_parameters(line, body):  # parse_planet_parameters
     """
     args = line.split()
 
-    body = Body(args[0], float(args[1]), args[2], *map(float, args[3:8]))
+    body = Body(args[0], *map(float, args[3:8]), int(args[1]), args[2])
 
+    return body
 
 
 def write_space_objects_data_to_file(output_filename, objects):
@@ -71,7 +70,7 @@ def write_space_objects_data_to_file(output_filename, objects):
             print("%s %d %s %f %f %f %f %f" % (obj.type, obj.R, obj.color, obj.m, obj.x, obj.y,
                                                obj.Vx, obj.Vy), file=out_file)
         out_file.close()
-    # FIXME: precision errors
+    # *precision errors?*
 
 
 if __name__ == "__main__":

@@ -29,6 +29,7 @@ def calculate_scale_factor(max_distance):
     """Вычисляет значение глобальной переменной **scale_factor** по данной характерной длине"""
     global scale_factor
     scale_factor = 0.5*min(window_height, window_width)/max_distance    # бред
+    print('Max distance:', max_distance)
     print('Scale factor:', scale_factor)
 
 
@@ -43,7 +44,7 @@ def scale_x(x):
     **x** — x-координата модели.
     """
 
-    return int(x*scale_factor) + window_width//2
+    return x * scale_factor + window_width / 2  # чтобы 0 был посередине
 
 
 def scale_y(y):
@@ -57,7 +58,8 @@ def scale_y(y):
 
     **y** — y-координата модели.
     """
-    return int(y*scale_factor) + window_width//2
+    return y * scale_factor + window_height / 2
+
 
 if __name__ == "__main__":
     print("This module is not for direct call!")
@@ -82,4 +84,5 @@ class DrawableObject:
         self.obj = obj
 
     def draw(self, surface):
-        pg.draw.circle(surface, self.obj.color, (self.obj.x, self.obj.y), self.obj.R)
+        pg.draw.circle(surface, self.obj.color, (scale_x(self.obj.x), scale_y(self.obj.y)), self.obj.R)
+        # R уже в пикселах

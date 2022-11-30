@@ -8,9 +8,9 @@ class Body:
     а также визуальный радиус тела в пикселах и его цвет.
     """
 
-    def __init__(self, type="na", m=1, x=0, y=0, Vx=0, Vy=0, R=5, color="red", image=None):
+    def __init__(self, obj_type="na", m=1, x=0, y=0, vx=0, vy=0, r=5, color="red", image=None):
 
-        self.type = type
+        self.type = obj_type
         """Признак объекта. Принимает значения "Star", "Planet" и "NA"."""
 
         self.m = m
@@ -22,10 +22,10 @@ class Body:
         self.y = y
         """Координата по оси **y**"""
 
-        self.Vx = Vx
+        self.Vx = vx
         """Скорость по оси **x**"""
 
-        self.Vy = Vy
+        self.Vy = vy
         """Скорость по оси **y**"""
 
         self.Fx = 0
@@ -34,7 +34,7 @@ class Body:
         self.Fy = 0
         """Сила по оси **y**"""
 
-        self.R = R
+        self.R = r
         """Радиус тела"""
 
         self.color = color

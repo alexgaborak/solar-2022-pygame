@@ -19,9 +19,15 @@ def calculate_force(body, space_objects):
     for obj in space_objects:
         if body == obj:
             continue  # тело не действует гравитационной силой на само себя!
-        r = ((body.x - obj.x)**2 + (body.y - obj.y)**2)**0.5
-        r = max(r, body.R) # FIXME: обработка аномалий при прохождении одного тела сквозь другое
-        pass  # FIXME: Взаимодействие объектов
+        x = obj.x - body.x
+        y = obj.y - body.y
+        r = (x**2 + y**2)**0.5
+        r = max(r, body.R)  # FIXME: обработка аномалий при прохождении одного тела сквозь другое
+
+        f = 6.6743e-11 * body.m * obj.m / (r ** 2)  # force
+        body.Fx = f * x/r
+        body.Fy = f * y/r
+
 
 def move_space_object(body, dt):
     """Перемещает тело в соответствии с действующей на него силой.
@@ -30,12 +36,13 @@ def move_space_object(body, dt):
 
     **body** — тело, которое нужно переместить.
     """
-    old = body.x  # FIXME: Вывести формулы для ускорения, скоростей и координат
     ax = body.Fx/body.m
-    body.x += 24
+    body.Vx += ax * dt
+    body.x += body.Vx * dt
+
     ay = body.Fy*body.m
-    body.y = 42
-    body.Vy += 4*dt
+    body.Vy += ay * dt
+    body.y += body.Vy * dt
 
 
 def recalculate_space_objects_positions(space_objects, dt):
